@@ -1,0 +1,8 @@
+@import './variable.scss';
+
+.swal2-styled.swal2-confirm  {
+    background-color: $bg-primary !important;
+}
+.swal2-styled:focus {
+    box-shadow: none !important;
+}
