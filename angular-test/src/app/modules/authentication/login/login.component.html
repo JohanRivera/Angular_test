@@ -1,1 +1,33 @@
-<p>login works!</p>
+<body>
+    <div class="wrapper fadeInDown bg-Login">
+      <div id="formContent">
+        <!-- Icon -->
+        <div class="fadeIn first">
+          <img class="logoEntidad" src="../../../../assets/img/logo.png" id="icon" alt="User Icon" />
+          <hr />
+        </div>
+  
+        <!-- Login Form -->
+        <form #formLogin="ngForm" (ngSubmit)="onSubmit(formLogin)" novalidate autocomplete="off">
+          <div class="wrap-input100 m-b-16">
+            <input class="input100" type="text" name="userName" [(ngModel)]="user.userName" placeholder="Usuario"
+              autofocus>
+            <span class="focus-input100"></span>
+          </div>
+  
+          <div class="wrap-input100 m-b-16">
+            <input class="input100" [type]="fieldTextType ? 'text' : 'password'" name="password" 
+            [(ngModel)]="user.password" placeholder="Contraseña">
+          </div>
+          <input type="submit" class="fadeIn fourth btn-mob-width" value="Ingresar">
+  
+          <div class="container">
+            <li [routerLinkActive]="['link-active']">
+              <a class="underlineHover" (click)="rememberPassword()">¿Olvidó su contraseña?</a>
+            </li><br>
+          </div>
+  
+        </form>  
+      </div>
+    </div>
+</body>
