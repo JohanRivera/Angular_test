@@ -35,9 +35,10 @@ export class LoginComponent implements OnInit {
   // Metodo para autenticar al usuario
   login(data: UserLogin)
   {
-    this.authService.login(data).subscribe(response =>{
+    this.authService.login(data).subscribe(response => {
       if(response.accessToken !== '')
         this.router.navigate(['/'])
+      
       else
         Swal.fire({
           icon: 'info',

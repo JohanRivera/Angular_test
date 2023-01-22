@@ -1,10 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { LoginGuard } from "./core/guards/login.guard";
 import { LayoutAuthComponent } from "./layouts/layout-auth/layout-auth.component";
+import { LayoutComponent } from "./layouts/layout/layout.component";
 
 const routes: Routes = [
     {
-        path: "",
+        path: "login",
         component: LayoutAuthComponent,
         children: [
             {
@@ -13,7 +15,19 @@ const routes: Routes = [
             }
         ]
     },
-    {   path: "**", redirectTo: ""  }
+    {
+        path: "",
+        canActivate: [LoginGuard],
+        component: LayoutComponent,
+        children: [
+            {
+                path: "",
+                canActivate: [LoginGuard],
+                loadChildren: () => import("./modules/crud/crud.module").then((m) => m.CrudModule)
+            }
+        ]
+    },
+    {   path: "**", redirectTo: "login"  }
 ];
 
 @NgModule({

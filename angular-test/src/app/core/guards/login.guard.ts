@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 
 export class LoginGuard implements CanActivate 
 {
+    private localStorageUserName = 'AngularTestStorage';
     constructor(private router: Router, private jwtService: JwtHelperService) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> 
@@ -16,7 +17,7 @@ export class LoginGuard implements CanActivate
         try
         {
             // 1. Valida si el token almacenado en localStorage, ya expiro
-            if (this.jwtService.isTokenExpired()) 
+            if (this.jwtService.isTokenExpired(localStorage.getItem(this.localStorageUserName))) 
             {
                 this.router.navigate(['/login']);
                 return false;

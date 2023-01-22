@@ -16,7 +16,7 @@ export class AuthService {
   private localStorageUserName = 'AngularTestStorage';
   private fakeLoginResponse: LoginResponse = {
     // fakeAccessToken.....
-    accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+    accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6InRlc3RAdGVzdC5jbyIsImV4cCI6MTcwMzIwMjkyMywiaWF0IjoxNjc0MzQ1MzIzfQ.HWYliguekh-OdZMBN9SozlE_kUGdRkPNplu7THj7NuQ',
     refreshToken: {
       id: 1,
       userId: 1,
@@ -31,7 +31,7 @@ export class AuthService {
 
   login(loginRequest: UserLogin): Observable<LoginResponse>
   {
-    if(loginRequest === TestUser)
+    if(loginRequest.userName === TestUser.userName && loginRequest.password === TestUser.password)
     {
       return of(this.fakeLoginResponse).pipe(
         tap((res: LoginResponse) => {
@@ -46,8 +46,9 @@ export class AuthService {
   }
 
   getLoggedInUser() {
-    const decodedToken = this.jwtService.decodeToken();
-    return decodedToken.user;
+    const decodedToken = this.jwtService.decodeToken(this.fakeLoginResponse.accessToken);
+    console.log(decodedToken.Username)
+    return decodedToken.Username;
   }
 
   logout() {
