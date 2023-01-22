@@ -1,0 +1,107 @@
+#buttonCheck {
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+  }
+
+#buttonRed {
+  color: red;
+}
+
+.btn-link.btn-cursor .tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  background-color: rgb(71, 71, 71);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 5px;
+
+  /* Position the tooltip */
+  position: absolute;
+  transform: translate(-100%, 80%);
+  z-index: 1;
+}
+
+.btn-link.btn-cursor:hover .tooltiptext {
+  visibility: visible;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(202, 202, 202);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(202, 202, 202);
+}
+
+.btn-ubiety {
+  margin-top: 30px;
+}
+
+.dt-container {
+  margin: 0%;
+}
+
+.header-color {
+  color: white;
+  background-color: #b3bbc4 !important;
+}
+
+.close {
+  color: white;
+}
+
+.btn-location{
+  float: right;
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}

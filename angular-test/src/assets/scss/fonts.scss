@@ -1,0 +1,49 @@
+@import './variable.scss';
+
+/*
+    @font-family nombre font
+    @font-file url ubicación archivo
+*/
+@mixin font($font-family, $font-file) {
+    @font-face {
+        font-family: $font-family;
+        src: url($font-file+'.ttf') format('truetype');
+    }
+}
+
+@include font($body-font,'../fonts/Text_Rg');
+
+body{
+    font-family: $body-font !important;
+}   
+
+// TITLES
+@include font($title-font, '../fonts/Text_XBd');
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: $title-font !important;
+}
+
+@mixin font-size($font-size,$line-height) {
+    font-size: $font-size;
+    line-height: $line-height;
+}
+//H1
+h1{
+    @include font-size(48px, 60px)
+}
+h2{
+    @include font-size(40px, 48px)
+}
+h3{
+    @include font-size(32px, 40px)
+}
+h4{
+    @include font-size(24px, 36px)
+}
+h5{
+    @include font-size(20px, 32px)
+}

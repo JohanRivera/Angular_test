@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">
+            <h4>Información tabla</h4>
+        </div>
+        <div class="col-md-2" id="buttonCheck">
+            <button type="button" class="btn btn-outline-success" (click)="addData()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>
+              Agregar data
+            </button>
+        </div>
+    </div>
+    <hr>
+    <div class="dt-container">
+        <ngx-datatable
+            class="material"
+            [rows]="dataList"
+            [columns]="columns"
+            [columnMode]="ColumnMode.force"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            rowHeight="auto"
+            [limit]="15"
+            >
+        </ngx-datatable>
+
+        <ng-template #titleTpl let-column="column">
+            <strong *ngIf="column.name == 'id'">Id</strong>
+            <strong *ngIf="column.name == 'title'">Titulo</strong>
+            <strong *ngIf="column.name == 'body'">Descripción</strong>
+            <strong *ngIf="column.name == 'userId'">Acciones</strong>
+        </ng-template>
+
+        <ng-template #dataTmpl let-row="row" let-column="column" let-value="value">
+            <a *ngIf="column.name == 'id'">
+              <button class="btn btn-link btn-cursor" (click)="updateData(row.id)">
+                  {{ row.id }}
+              </button>
+            </a>
+            <a *ngIf="column.name == 'title'">{{ row.title }}</a>
+            <a *ngIf="column.name == 'body'">{{ row.body }}</a>
+            <a *ngIf="column.name == 'userId'">
+                <button class="btn btn-link btn-cursor" id="buttonRed" data-toggle="modal" data-target="#confirmModal"
+                    (click)="obteinId(row)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                    <span class="tooltiptext">Eliminar</span>
+                </button>
+            </a>
+          </ng-template>
+    </div>
+</div>
+
+<!-- Eliminar registro -->
+<div class="modal fadeInDown" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" role="dialog" data-backdrop="false" aria-hidden="true">
+    <div class="modal-dialog modal-ls modal-responsive" role="document" style="box-shadow: 0 30px 60px 0 rgb(0 0 0 / 33%);">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Confirmación Id {{idDelete}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <a>Desea eliminar el registro para el Id {{idDelete}}</a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteData(idDelete)" data-dismiss="modal">Eliminar registro</button>
+        </div>
+      </div>
+    </div>
+</div>

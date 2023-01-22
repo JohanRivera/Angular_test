@@ -1,0 +1,60 @@
+@media (max-width:650px) {
+
+    .ngx-datatable .datatable-footer .datatable-footer-inner {
+        flex-direction: column;
+        height: 84px !important;
+    }
+
+    .ngx-datatable.material .datatable-footer .datatable-pager {
+        margin: 0;
+    }
+
+    .ngx-datatable .datatable-footer .datatable-pager .pager li a {
+        margin: 0;
+        padding: 0;
+    }
+
+    .ngx-datatable.material .datatable-footer .page-count {
+        display: flex;
+        align-items: center;
+    }
+}
+/*
+    Las tablas con la clase .responsive-table se encargarán de mostrar la información de forma vertical
+*/
+.responsive-table .column-title {
+    display: none;
+}
+
+@media (max-width:769px) {
+    .container {
+        padding: 0;
+    }
+
+    .responsive-table .column-title {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .responsive-table .datatable-row-center {
+        flex-flow: column !important;
+        justify-content: center;
+    }
+
+    .responsive-table .datatable-body-cell {
+        max-width: unset !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .responsive-table .ngx-datatable .datatable-footer .datatable-footer-inner {
+        display: block !important;
+        text-align: center;
+    }
+
+    .responsive-table .datatable-header {
+        display: none !important;
+    }
+
+}
