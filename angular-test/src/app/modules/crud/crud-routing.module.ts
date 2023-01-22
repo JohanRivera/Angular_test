@@ -14,7 +14,7 @@ const routes: Routes = [
     component: AddDataComponent
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     component: UpdateDataComponent
   },
   {

@@ -35,7 +35,11 @@
         </ng-template>
 
         <ng-template #dataTmpl let-row="row" let-column="column" let-value="value">
-            <a *ngIf="column.name == 'id'">{{ row.id }}</a>
+            <a *ngIf="column.name == 'id'">
+              <button class="btn btn-link btn-cursor" (click)="updateData(row.id)">
+                  {{ row.id }}
+              </button>
+            </a>
             <a *ngIf="column.name == 'title'">{{ row.title }}</a>
             <a *ngIf="column.name == 'body'">{{ row.body }}</a>
             <a *ngIf="column.name == 'userId'">

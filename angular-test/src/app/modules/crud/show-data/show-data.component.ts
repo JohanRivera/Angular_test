@@ -103,4 +103,8 @@ export class ShowDataComponent implements OnInit {
   addData(){
     this.router.navigate(['/add'])
   }
+
+  updateData(data: any){
+    this.router.navigate(['/edit/' + data])
+  }
 }
