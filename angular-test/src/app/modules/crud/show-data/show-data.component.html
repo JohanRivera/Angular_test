@@ -1,1 +1,30 @@
-<p>show-data works!</p>
+<div class="container-fluid">
+    <h4>Información tabla</h4>
+    <div class="dt-container">
+        <ngx-datatable
+            class="material"
+            [rows]="dataList"
+            [columns]="columns"
+            [columnMode]="ColumnMode.force"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            rowHeight="auto"
+            [limit]="15"
+            >
+        </ngx-datatable>
+
+        <ng-template #titleTpl let-column="column">
+            <strong *ngIf="column.name == 'id'">Id</strong>
+            <strong *ngIf="column.name == 'userId'">User</strong>
+            <strong *ngIf="column.name == 'title'">Titulo</strong>
+            <strong *ngIf="column.name == 'body'">Descripción</strong>
+        </ng-template>
+
+        <ng-template #dataTmpl let-row="row" let-column="column" let-value="value">
+            <a *ngIf="column.name == 'id'">{{ row.id }}</a>
+            <a *ngIf="column.name == 'userId'">{{ row.userId }}</a>
+            <a *ngIf="column.name == 'title'">{{ row.title }}</a>
+            <a *ngIf="column.name == 'body'">{{ row.body }}</a>
+          </ng-template>
+    </div>
+</div>
