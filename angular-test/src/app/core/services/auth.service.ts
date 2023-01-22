@@ -47,7 +47,6 @@ export class AuthService {
 
   getLoggedInUser() {
     const decodedToken = this.jwtService.decodeToken(this.fakeLoginResponse.accessToken);
-    console.log(decodedToken.Username)
     return decodedToken.Username;
   }
 
