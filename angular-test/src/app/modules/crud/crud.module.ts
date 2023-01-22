@@ -6,6 +6,7 @@ import { ShowDataComponent } from './show-data/show-data.component';
 import { AddDataComponent } from './add-data/add-data.component';
 import { UpdateDataComponent } from './update-data/update-data.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
   imports: [
     CommonModule,
     CrudRoutingModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CrudModule { }
